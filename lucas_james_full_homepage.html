@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;--bg-header:#1a1a1a;--text:#1a1a1a;--text-muted:#999;
+  --text-body:#555;--border:#e0ddd8;--card-bg:#fff;
+  --tag-bg:#1a1a1a;--tag-text:#f5f4f0;--accent:#c8b89a;
+  --nav-link:#888;--nav-active:#f5f4f0;--section-bg:#eceae4;
+}
+[data-theme="dark"]{
+  --bg:#111;--bg-header:#0a0a0a;--text:#f0ede8;--text-muted:#555;
+  --text-body:#999;--border:#222;--card-bg:#1a1a1a;
+  --tag-bg:#f0ede8;--tag-text:#1a1a1a;--accent:#c8b89a;
+  --nav-link:#555;--nav-active:#f0ede8;--section-bg:#161616;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+header{background:var(--bg-header);color:var(--nav-active);padding:52px 48px 40px;display:flex;align-items:flex-end;justify-content:space-between}
+.header-left{display:flex;align-items:flex-end;gap:28px}
+.avatar{width:80px;height:80px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:26px;color:#1a1a1a;flex-shrink:0}
+.header-text h1{font-family:'DM Serif Display',serif;font-size:34px;font-weight:400;line-height:1.1;margin-bottom:5px}
+.header-text p{font-size:13px;color:var(--text-muted);font-weight:300;letter-spacing:.05em}
+.toggle-wrap{display:flex;flex-direction:column;align-items:center;gap:5px}
+.toggle-label{font-size:10px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+.toggle-btn{background:var(--accent);border:none;border-radius:24px;width:48px;height:26px;cursor:pointer;position:relative;transition:background .3s}
+.toggle-btn::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .3s}
+[data-theme="dark"] .toggle-btn::after{transform:translateX(22px)}
+nav{background:var(--bg-header);padding:0 48px;display:flex;gap:0;border-top:.5px solid #222;overflow-x:auto}
+nav a{color:var(--nav-link);text-decoration:none;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:13px 20px 13px 0;margin-right:12px;display:block;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;cursor:pointer;white-space:nowrap}
+nav a:hover,nav a.active{color:var(--nav-active);border-bottom-color:var(--accent)}
+main{max-width:800px;margin:0 auto;padding:48px 48px 80px}
+section{display:none}
+section.active{display:block}
+.section-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:28px;padding-bottom:12px;border-bottom:.5px solid var(--border)}
+
+/* About */
+.intro-text{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;line-height:1.55;color:var(--text);margin-bottom:18px}
+.intro-body{font-size:14px;line-height:1.85;color:var(--text-body);max-width:560px;margin-bottom:32px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.tag{background:var(--tag-bg);color:var(--tag-text);font-size:11px;padding:5px 13px;border-radius:20px;letter-spacing:.03em;transition:background .3s,color .3s}
+
+/* Education */
+.edu-item{padding:22px 0;border-bottom:.5px solid var(--border);display:flex;gap:20px;align-items:flex-start}
+.edu-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0}
+.edu-item h3{font-family:'DM Serif Display',serif;font-size:17px;font-weight:400;margin-bottom:4px;color:var(--text)}
+.edu-item .school{font-size:13px;color:var(--text-muted);margin-bottom:3px}
+.edu-item .year{font-size:12px;color:var(--text-muted)}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.skill-card{background:var(--card-bg);border:.5px solid var(--border);border-radius:12px;padding:18px 20px;transition:background .3s}
+.skill-card .skill-cat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.skill-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.skill-bar-row:last-child{margin-bottom:0}
+.skill-name{font-size:13px;color:var(--text);min-width:70px}
+.bar-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;background:var(--accent);border-radius:2px}
+
+/* Projects */
+.project-item{padding:22px 0;border-bottom:.5px solid var(--border);display:grid;grid-template-columns:1fr auto;align-items:start;gap:16px}
+.project-item h3{font-family:'DM Serif Display',serif;font-size:17px;font-weight:400;margin-bottom:6px;color:var(--text)}
+.project-item p{font-size:13px;color:var(--text-body);line-height:1.65}
+.project-year{font-size:11px;color:var(--text-muted);padding-top:5px;white-space:nowrap}
+
+/* Publications */
+.pub-item{padding:20px 0;border-bottom:.5px solid var(--border)}
+.pub-item .pub-title{font-family:'DM Serif Display',serif;font-size:16px;font-weight:400;margin-bottom:5px;color:var(--text)}
+.pub-item .pub-authors{font-size:12px;color:var(--text-muted);margin-bottom:4px}
+.pub-item .pub-venue{font-size:12px;color:var(--accent);font-style:italic}
+.pub-badge{display:inline-block;font-size:10px;padding:3px 9px;border-radius:10px;border:.5px solid var(--border);color:var(--text-muted);margin-left:8px;vertical-align:middle}
+
+/* Hobbies */
+.hobby-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.hobby-card{background:var(--card-bg);border:.5px solid var(--border);border-radius:12px;padding:22px 18px;text-align:center;transition:background .3s}
+.hobby-icon{font-size:28px;margin-bottom:12px;display:block}
+.hobby-card h3{font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text)}
+.hobby-card p{font-size:12px;color:var(--text-body);line-height:1.6}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-card{background:var(--card-bg);border:.5px solid var(--border);border-radius:12px;padding:18px 22px;transition:background .3s}
+.contact-card .label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.contact-card .value{font-size:14px;color:var(--text);font-weight:500}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="avatar">LJ</div>
+    <div class="header-text">
+      <h1>Lucas James</h1>
+      <p>PhD Researcher · Optical Communications · ASU</p>
+    </div>
+  </div>
+  <div class="toggle-wrap">
+    <span class="toggle-label" id="theme-label">Light</span>
+    <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+  </div>
+</header>
+
+<nav>
+  <a class="active" onclick="show('about',this)">关于我</a>
+  <a onclick="show('education',this)">教育背景</a>
+  <a onclick="show('skills',this)">技能</a>
+  <a onclick="show('projects',this)">项目</a>
+  <a onclick="show('publications',this)">论文</a>
+  <a onclick="show('hobbies',this)">爱好</a>
+  <a onclick="show('contact',this)">联系方式</a>
+</nav>
+
+<main>
+
+  <!-- 关于我 -->
+  <section id="about" class="active">
+    <p class="section-label">关于我 — About Me</p>
+    <p class="intro-text">I build systems that send light through water and bend beams on demand.</p>
+    <p class="intro-body">
+      I'm a PhD student at Arizona State University researching optical wireless communications —
+      specifically underwater optical links and adaptive beam steering systems.
+      Alongside my engineering work, I'm an enthusiastic language learner currently studying Mandarin Chinese.
+      I believe that connecting across cultures is just as important as connecting across distances.
+    </p>
+    <div class="tags">
+      <span class="tag">Optical Communications</span>
+      <span class="tag">Beam Steering</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">FPGA</span>
+      <span class="tag">Python</span>
+      <span class="tag">中文学习者</span>
+    </div>
+  </section>
+
+  <!-- 教育背景 -->
+  <section id="education">
+    <p class="section-label">教育背景 — Education</p>
+    <div class="edu-item">
+      <div class="edu-dot"></div>
+      <div>
+        <h3>PhD in Electrical Engineering</h3>
+        <div class="school">Arizona State University · Tempe, AZ</div>
+        <div class="year">2023 — Present · Optical Wireless Communications</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-dot"></div>
+      <div>
+        <h3>B.S. in Electrical Engineering</h3>
+        <div class="school">Arizona State University · Tempe, AZ</div>
+        <div class="year">2019 — 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section id="skills">
+    <p class="section-label">技能 — Skills</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">编程 — Programming</div>
+        <div class="skill-bar-row"><span class="skill-name">Python</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">MATLAB</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">C / C++</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">硬件 — Hardware</div>
+        <div class="skill-bar-row"><span class="skill-name">FPGA</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">Optical Lab</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">PCB Design</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">人工智能 — AI / ML</div>
+        <div class="skill-bar-row"><span class="skill-name">PyTorch</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">Sci-kit Learn</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">Signal ML</span><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">语言 — Languages</div>
+        <div class="skill-bar-row"><span class="skill-name">English</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+        <div class="skill-bar-row"><span class="skill-name">中文</span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目 -->
+  <section id="projects">
+    <p class="section-label">项目 — Projects</p>
+    <div class="project-item">
+      <div>
+        <h3>Underwater Optical Communication</h3>
+        <p>Designing and testing high-speed optical links for underwater environments where RF signals fail. Focuses on turbulence mitigation and link budget optimization.</p>
+      </div>
+      <span class="project-year">2024 — Now</span>
+    </div>
+    <div class="project-item">
+      <div>
+        <h3>Adaptive Beam Steering System</h3>
+        <p>Building an FPGA-controlled beam steering platform using liquid crystal spatial light modulators for precise, dynamic optical alignment in free-space links.</p>
+      </div>
+      <span class="project-year">2023 — Now</span>
+    </div>
+    <div class="project-item">
+      <div>
+        <h3>ML-Based Channel Estimation</h3>
+        <p>Applying deep learning models to predict and compensate for channel distortion in optical wireless communication systems.</p>
+      </div>
+      <span class="project-year">2023</span>
+    </div>
+  </section>
+
+  <!-- 论文 -->
+  <section id="publications">
+    <p class="section-label">论文 — Publications</p>
+    <div class="pub-item">
+      <div class="pub-title">Turbulence-Resilient Underwater Optical Links via Adaptive Beam Shaping <span class="pub-badge">Under Review</span></div>
+      <div class="pub-authors">L. James, [Co-authors] — 2026</div>
+      <div class="pub-venue">IEEE Journal of Lightwave Technology</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-title">FPGA-Accelerated Beam Steering for Free-Space Optical Communication</div>
+      <div class="pub-authors">L. James, [Co-authors] — 2025</div>
+      <div class="pub-venue">Optics Express · Conference Proceedings</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-title">Deep Learning for Channel Estimation in Optical Wireless Systems</div>
+      <div class="pub-authors">L. James, [Co-authors] — 2024</div>
+      <div class="pub-venue">IEEE Photonics Conference</div>
+    </div>
+  </section>
+
+  <!-- 爱好 -->
+  <section id="hobbies">
+    <p class="section-label">兴趣爱好 — Hobbies</p>
+    <div class="hobby-grid">
+      <div class="hobby-card">
+        <span class="hobby-icon">🏃</span>
+        <h3>运动 — Sports</h3>
+        <p>Running, hiking, and staying active. Exercise helps me reset and think more clearly about research problems.</p>
+      </div>
+      <div class="hobby-card">
+        <span class="hobby-icon">✈️</span>
+        <h3>旅行 — Travel</h3>
+        <p>Exploring new places and cultures. Travel reminds me how big and interconnected the world really is.</p>
+      </div>
+      <div class="hobby-card">
+        <span class="hobby-icon">📖</span>
+        <h3>语言学习 — Languages</h3>
+        <p>Currently learning Mandarin Chinese. I enjoy the challenge of thinking in a completely different structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系方式 -->
+  <section id="contact">
+    <p class="section-label">联系方式 — Contact</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <p class="label">电子邮件 — Email</p>
+        <p class="value">lchen357@asu.edu</p>
+      </div>
+      <div class="contact-card">
+        <p class="label">大学 — University</p>
+        <p class="value">Arizona State University</p>
+      </div>
+      <div class="contact-card">
+        <p class="label">研究方向 — Research</p>
+        <p class="value">Optical Wireless Comms</p>
+      </div>
+      <div class="contact-card">
+        <p class="label">所在城市 — Location</p>
+        <p class="value">Tempe, Arizona, USA</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function show(id,link){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  link.classList.add('active');
+}
+function toggleTheme(){
+  const h=document.documentElement;
+  const dark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',dark?'light':'dark');
+  document.getElementById('theme-label').textContent=dark?'Light':'Dark';
+}
+</script>
+</body>
+</html>
