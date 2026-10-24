@@ -525,3 +525,20 @@ body.theme-luka strong {
     font-size: 13px;
   }
 }
+
+/* Left-hand institution emblems and publication illustrations. */
+body.theme-luka .institution-logo { object-fit:contain; background:#fff; border-radius:50%; }
+body.theme-luka #education .card + .card { margin-top:20px; }
+body.theme-luka .pub-row { display:flex; align-items:flex-start; gap:18px; }
+body.theme-luka .pub-thumbnail { display:block; flex:0 0 160px; width:160px; }
+body.theme-luka .pub-thumbnail img { display:block; width:100%; height:auto; aspect-ratio:500/280; object-fit:contain; background:#fff; border-radius:6px; }
+body.theme-luka .pub-content { min-width:0; flex:1; }
+@media(max-width:640px) {
+ body.theme-luka .pub-row { gap:12px; }
+ body.theme-luka .pub-thumbnail { flex-basis:100px; width:100px; }
+}
+@media(max-width:380px) {
+ body.theme-luka .pub-thumbnail { flex-basis:76px; width:76px; }
+}
+
+body.theme-luka .section { scroll-margin-top: 84px; }
