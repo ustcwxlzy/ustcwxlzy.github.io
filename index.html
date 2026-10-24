@@ -2,20 +2,23 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shuaiqi Chen · Optical Communications &amp; MEMS Research</title>
+<meta name="description" content="Research portfolio covering MEMS beam tracking, underwater optical communication, and experimental system engineering.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f5f4f0;--bg-header:#1a1a1a;--text:#1a1a1a;--text-muted:#999;
+  --bg:#f5f4f0;--bg-header:#1a1a1a;--text:#1a1a1a;--text-muted:#68645f;
   --text-body:#555;--border:#e0ddd8;--card-bg:#fff;
   --tag-bg:#1a1a1a;--tag-text:#f5f4f0;--accent:#c8b89a;
   --nav-link:#888;--nav-active:#f5f4f0;--section-bg:#eceae4;
 }
 [data-theme="dark"]{
-  --bg:#111;--bg-header:#0a0a0a;--text:#f0ede8;--text-muted:#555;
+  --bg:#111;--bg-header:#0a0a0a;--text:#f0ede8;--text-muted:#aaa49c;
   --text-body:#999;--border:#222;--card-bg:#1a1a1a;
   --tag-bg:#f0ede8;--tag-text:#1a1a1a;--accent:#c8b89a;
-  --nav-link:#555;--nav-active:#f0ede8;--section-bg:#161616;
+  --nav-link:#a39e96;--nav-active:#f0ede8;--section-bg:#161616;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
 header{background:var(--bg-header);color:var(--nav-active);padding:52px 48px 40px;display:flex;align-items:flex-end;justify-content:space-between}
@@ -69,7 +72,7 @@ section.active{display:block}
 .pub-item{padding:20px 0;border-bottom:.5px solid var(--border)}
 .pub-item .pub-title{font-family:'DM Serif Display',serif;font-size:16px;font-weight:400;margin-bottom:5px;color:var(--text)}
 .pub-item .pub-authors{font-size:12px;color:var(--text-muted);margin-bottom:4px}
-.pub-item .pub-venue{font-size:12px;color:var(--accent);font-style:italic}
+.pub-item .pub-venue{font-size:12px;color:var(--text-body);font-style:italic}
 .pub-badge{display:inline-block;font-size:10px;padding:3px 9px;border-radius:10px;border:.5px solid var(--border);color:var(--text-muted);margin-left:8px;vertical-align:middle}
 
 /* Hobbies */
@@ -84,213 +87,205 @@ section.active{display:block}
 .contact-card{background:var(--card-bg);border:.5px solid var(--border);border-radius:12px;padding:18px 22px;transition:background .3s}
 .contact-card .label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
 .contact-card .value{font-size:14px;color:var(--text);font-weight:500}
+
+/* Review additions: retain the original typefaces, palette and card layout. */
+.header-text p,.toggle-label{color:#b5afa7}
+.header-left,.header-text,.project-item>div{min-width:0}
+.header-text h1{overflow-wrap:anywhere}
+.toggle-wrap{flex-shrink:0}
+header{gap:20px}
+main a{color:var(--text);text-underline-offset:3px;overflow-wrap:anywhere}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.review-note{font-size:12px;line-height:1.7;color:var(--text-body);border-left:3px solid var(--accent);padding:10px 14px;margin-bottom:24px;background:var(--section-bg)}
+.project-item p+p{margin-top:10px}
+.project-item ul{padding-left:20px;margin:10px 0;color:var(--text-body);font-size:13px;line-height:1.75}
+.skill-card p,.pub-item p{font-size:13px;line-height:1.75;color:var(--text-body)}
+.pub-item p{margin-top:10px}
+.contact-card .value{overflow-wrap:anywhere}
+@media(max-width:600px){
+  header{padding:28px 20px;align-items:flex-start}
+  .header-left{gap:14px;align-items:center}
+  .avatar{width:52px;height:52px;font-size:20px}
+  .header-text h1{font-size:26px}
+  .header-text p{font-size:12px;line-height:1.6;letter-spacing:0}
+  nav{padding:0 20px}
+  main{padding:30px 20px 60px}
+  .skills-grid,.hobby-grid,.contact-grid{grid-template-columns:1fr}
+  .project-item{grid-template-columns:1fr;gap:6px}
+  .project-year{white-space:normal}
+  .intro-text{font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
 </style>
+<noscript><style>section{display:block;margin-bottom:48px}.toggle-wrap{display:none}</style></noscript>
 </head>
 <body>
 
 <header>
   <div class="header-left">
-    <div class="avatar">LJ</div>
+    <div class="avatar" aria-hidden="true">SC</div>
     <div class="header-text">
-      <h1>Lucas James</h1>
-      <p>PhD Researcher · Optical Communications · ASU</p>
+      <h1>Shuaiqi Chen</h1>
+      <p>University of Science and Technology of China · Optical Communications</p>
     </div>
   </div>
   <div class="toggle-wrap">
     <span class="toggle-label" id="theme-label">Light</span>
-    <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+    <button class="toggle-btn" onclick="toggleTheme()" type="button" aria-label="Toggle dark mode" aria-pressed="false"></button>
   </div>
 </header>
 
-<nav>
-  <a class="active" onclick="show('about',this)">关于我</a>
-  <a onclick="show('education',this)">教育背景</a>
-  <a onclick="show('skills',this)">技能</a>
-  <a onclick="show('projects',this)">项目</a>
-  <a onclick="show('publications',this)">论文</a>
-  <a onclick="show('hobbies',this)">爱好</a>
-  <a onclick="show('contact',this)">联系方式</a>
+<nav aria-label="Portfolio sections">
+  <a class="active" href="#about" aria-current="page">关于我</a>
+  <a href="#education">教育背景</a>
+  <a href="#skills">技能</a>
+  <a href="#projects">项目</a>
+  <a href="#publications">论文</a>
+  <a href="#hobbies">爱好</a>
+  <a href="#contact">联系方式</a>
 </nav>
 
 <main>
+  <p class="review-note">Local review draft · 23 October 2026. Publication records have been checked against publisher and DOI metadata. Degree details and individual project responsibilities await confirmation.</p>
 
   <!-- 关于我 -->
   <section id="about" class="active">
     <p class="section-label">关于我 — About Me</p>
-    <p class="intro-text">I build systems that send light through water and bend beams on demand.</p>
-    <p class="intro-body">
-      I'm a PhD student at Arizona State University researching optical wireless communications —
-      specifically underwater optical links and adaptive beam steering systems.
-      Alongside my engineering work, I'm an enthusiastic language learner currently studying Mandarin Chinese.
-      I believe that connecting across cultures is just as important as connecting across distances.
-    </p>
+    <p class="intro-text">Optical wireless links, MEMS beam tracking, and real-time experimental systems.</p>
+    <p class="intro-body">My research interests include optical wireless communication, MEMS closed-loop beam tracking, and modulating retro-reflector (MRR) systems. I am also exploring large-language-model inference and AI infrastructure engineering. The projects below distinguish documented system results from research directions.</p>
     <div class="tags">
-      <span class="tag">Optical Communications</span>
-      <span class="tag">Beam Steering</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">FPGA</span>
-      <span class="tag">Python</span>
-      <span class="tag">中文学习者</span>
+      <span class="tag">Optical Communications</span><span class="tag">MEMS Tracking</span>
+      <span class="tag">Real-Time Systems</span><span class="tag">Experimental Analysis</span>
+      <span class="tag">MRR Research</span><span class="tag">AI Infrastructure · Exploring</span>
     </div>
   </section>
 
   <!-- 教育背景 -->
   <section id="education">
     <p class="section-label">教育背景 — Education</p>
-    <div class="edu-item">
-      <div class="edu-dot"></div>
-      <div>
-        <h3>PhD in Electrical Engineering</h3>
-        <div class="school">Arizona State University · Tempe, AZ</div>
-        <div class="year">2023 — Present · Optical Wireless Communications</div>
-      </div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-dot"></div>
-      <div>
-        <h3>B.S. in Electrical Engineering</h3>
-        <div class="school">Arizona State University · Tempe, AZ</div>
-        <div class="year">2019 — 2023</div>
-      </div>
-    </div>
+    <div class="edu-item"><div class="edu-dot"></div><div>
+      <h3>University of Science and Technology of China</h3>
+      <div class="school">USTC · School confirmed by the portfolio owner. Degree, field of study, and dates await confirmation.</div>
+    </div></div>
   </section>
 
   <!-- 技能 -->
   <section id="skills">
-    <p class="section-label">技能 — Skills</p>
+    <p class="section-label">技能 — Skills &amp; Engineering Evidence</p>
+    <p class="review-note">These areas are supported by project materials or code. They are not proficiency ratings or a claim of sole authorship.</p>
     <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-cat">编程 — Programming</div>
-        <div class="skill-bar-row"><span class="skill-name">Python</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">MATLAB</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">C / C++</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-cat">硬件 — Hardware</div>
-        <div class="skill-bar-row"><span class="skill-name">FPGA</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">Optical Lab</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">PCB Design</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-cat">人工智能 — AI / ML</div>
-        <div class="skill-bar-row"><span class="skill-name">PyTorch</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">Sci-kit Learn</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">Signal ML</span><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div></div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-cat">语言 — Languages</div>
-        <div class="skill-bar-row"><span class="skill-name">English</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-        <div class="skill-bar-row"><span class="skill-name">中文</span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
-      </div>
+      <div class="skill-card"><div class="skill-cat">控制 — Control</div><p>MEMS scanning, optical feedback, coarse acquisition, and Kalman-based tracking in the published system paper.</p></div>
+      <div class="skill-card"><div class="skill-cat">系统 — Systems</div><p>FPGA control, XADC/SPI interfaces, frame synchronization, and real-time BER calculation documented in the optical terminal design.</p></div>
+      <div class="skill-card"><div class="skill-cat">分析 — Analysis</div><p>MATLAB tracking-error analysis, cross-correlation timing estimates, cycle-mean drift analysis, and simulated interference comparisons.</p></div>
+      <div class="skill-card"><div class="skill-cat">代码 — Code</div><p>Public C/Python GPIO and SPI acquisition prototypes in <a href="https://github.com/ustcwxlzy/pi_AD7495">pi_AD7495</a>. Hardware performance has not been verified in this review.</p></div>
     </div>
   </section>
 
   <!-- 项目 -->
   <section id="projects">
     <p class="section-label">项目 — Projects</p>
-    <div class="project-item">
-      <div>
-        <h3>Underwater Optical Communication</h3>
-        <p>Designing and testing high-speed optical links for underwater environments where RF signals fail. Focuses on turbulence mitigation and link budget optimization.</p>
-      </div>
-      <span class="project-year">2024 — Now</span>
-    </div>
-    <div class="project-item">
-      <div>
-        <h3>Adaptive Beam Steering System</h3>
-        <p>Building an FPGA-controlled beam steering platform using liquid crystal spatial light modulators for precise, dynamic optical alignment in free-space links.</p>
-      </div>
-      <span class="project-year">2023 — Now</span>
-    </div>
-    <div class="project-item">
-      <div>
-        <h3>ML-Based Channel Estimation</h3>
-        <p>Applying deep learning models to predict and compensate for channel distortion in optical wireless communication systems.</p>
-      </div>
-      <span class="project-year">2023</span>
-    </div>
+    <p class="review-note">The first two entries describe two parts of the system reported in Optics Express (2026). Results are publication-reported measurements under the stated conditions; this review did not independently reproduce the experiments.</p>
+    <div class="project-item"><div>
+      <h3>MEMS Closed-Loop Beam Acquisition &amp; Tracking</h3>
+      <p>The published system combines a two-axis MEMS mirror, PMT optical feedback, FPGA/XADC acquisition, and SPI control. Rotating raster scanning, sliding-window detection, and spatial clustering support coarse acquisition; nutation scanning and Kalman-based prediction support fine tracking.</p>
+      <ul>
+        <li>Minimum mean acquisition time reported: approximately <strong>2.01 s</strong>; acquisition statistics use 42 target positions, one trial per position for each configuration.</li>
+        <li>Reported bench tracking errors: approximately <strong>±10 mm at 0.25 m/s</strong> and <strong>±15 mm at 0.50 m/s</strong>, using a motorized one-dimensional stage and reference trajectory.</li>
+      </ul>
+      <p>No dedicated active beacon is used; a cooperating passive retro-reflective target is still required. Bench tracking results should not be read as underwater positioning accuracy.</p>
+      <p><a href="https://doi.org/10.1364/OE.613570">Source: Optics Express (2026)</a> · Individual responsibilities remain to be confirmed.</p>
+    </div><span class="project-year">Publication-reported</span></div>
+    <div class="project-item"><div>
+      <h3>Real-Time Underwater Optical Communication Terminal</h3>
+      <p>The same system integrates waterproof optical terminals, a Zynq-7100 transmitter/controller, and a Zynq-7020 receiver for frame synchronization, data recovery, and real-time BER calculation. Pool experiments use a fixed transmitter and an ROV-mounted receiver.</p>
+      <ul>
+        <li>Reported rate–distance operating points: <strong>10 Mbps over 50 m</strong>, <strong>50 Mbps over approximately 25 m</strong>, and <strong>100 Mbps over 20 m</strong>.</li>
+        <li>PRBS transmission and BER measurements evaluate active tracking against a manually aligned baseline in relatively clear swimming-pool water.</li>
+      </ul>
+      <p>These are separate tested operating points, not a 100 Mbps / 50 m result, application throughput, or open-ocean validation. See the paper for the measurement protocol and BER criterion; these are reported experimental results, not guaranteed operating limits.</p>
+      <p><a href="https://doi.org/10.1364/OE.613570">Source: Optics Express (2026)</a> · Control-loop latency and personal module ownership are not yet verified.</p>
+    </div><span class="project-year">Publication-reported</span></div>
+    <div class="project-item"><div>
+      <h3>MRR Optical Links</h3>
+      <p>Modulating retro-reflector communication is a stated research direction. No independently checked implementation, rate–distance result, or publication is listed here. It is not equated with the passive retro-reflective target used in the MEMS tracking experiment.</p>
+    </div><span class="project-year">Research direction</span></div>
+    <div class="project-item"><div>
+      <h3>GPIO / SPI Data-Acquisition Prototypes</h3>
+      <p>The public pi_AD7495 repository contains C and Python acquisition code. It provides inspectable examples of hardware-interface work, but does not establish a measured sampling rate, accuracy, or long-run reliability.</p>
+      <p><a href="https://github.com/ustcwxlzy/pi_AD7495">View repository</a> · <a href="https://github.com/ustcwxlzy/pi_AD7495/blob/main/pi_ad7495.c">Inspect C prototype</a></p>
+    </div><span class="project-year">Public code</span></div>
   </section>
 
   <!-- 论文 -->
   <section id="publications">
-    <p class="section-label">论文 — Publications</p>
+    <p class="section-label">论文 — Selected Publications</p>
     <div class="pub-item">
-      <div class="pub-title">Turbulence-Resilient Underwater Optical Links via Adaptive Beam Shaping <span class="pub-badge">Under Review</span></div>
-      <div class="pub-authors">L. James, [Co-authors] — 2026</div>
-      <div class="pub-venue">IEEE Journal of Lightwave Technology</div>
+      <h3 class="pub-title"><a href="https://doi.org/10.1364/oe.613570">Real-time beaconless MEMS mirror-based beam steering and tracking system for mobile underwater optical wireless communication</a></h3>
+      <p class="pub-authors"><strong>Shuaiqi Chen</strong>, Weijie Liu, Nuo Huang, Yihua Hu, Tianqi Mao, Beiyuan Liu, Zhengyuan Xu</p>
+      <p class="pub-venue">Optics Express 34(22), 40895–40910 (2026)</p>
+      <p>First author · Published online 19 October 2026; issue date 2 November 2026.</p>
+      <p><a href="https://doi.org/10.1364/oe.613570">DOI: 10.1364/oe.613570</a></p>
     </div>
     <div class="pub-item">
-      <div class="pub-title">FPGA-Accelerated Beam Steering for Free-Space Optical Communication</div>
-      <div class="pub-authors">L. James, [Co-authors] — 2025</div>
-      <div class="pub-venue">Optics Express · Conference Proceedings</div>
+      <h3 class="pub-title"><a href="https://doi.org/10.1109/jlt.2024.3510452">A Real-Time MEMS Mirror Based Beam Steering and Tracking System for Optical Wireless Communication</a></h3>
+      <p class="pub-authors">Weijie Liu, <strong>Shuaiqi Chen</strong>, Nuo Huang, Chen Gong, Yuwei Chen, Zhengyuan Xu</p>
+      <p class="pub-venue">Journal of Lightwave Technology 43(6), 2681–2689 (2025)</p>
+      <p>Second author · Published online 3 December 2024; issue date 15 March 2025.</p>
+      <p><a href="https://doi.org/10.1109/jlt.2024.3510452">DOI: 10.1109/jlt.2024.3510452</a></p>
     </div>
     <div class="pub-item">
-      <div class="pub-title">Deep Learning for Channel Estimation in Optical Wireless Systems</div>
-      <div class="pub-authors">L. James, [Co-authors] — 2024</div>
-      <div class="pub-venue">IEEE Photonics Conference</div>
+      <h3 class="pub-title"><a href="https://doi.org/10.1109/icicn62625.2024.10761907">A Real-Time MEMS Mirror Based Tracking System for Optical Wireless Communication</a></h3>
+      <p class="pub-authors"><strong>Shuaiqi Chen</strong>, Weijie Liu, Nuo Huang, Zhengyuan Xu</p>
+      <p class="pub-venue">2024 IEEE 12th International Conference on Information, Communication and Networks (ICICN), pp. 541–546 (2024)</p>
+      <p>First author · Conference held 21–24 August 2024 in Guilin, China.</p>
+      <p><a href="https://doi.org/10.1109/icicn62625.2024.10761907">DOI: 10.1109/icicn62625.2024.10761907</a></p>
     </div>
   </section>
 
   <!-- 爱好 -->
   <section id="hobbies">
     <p class="section-label">兴趣爱好 — Hobbies</p>
-    <div class="hobby-grid">
-      <div class="hobby-card">
-        <span class="hobby-icon">🏃</span>
-        <h3>运动 — Sports</h3>
-        <p>Running, hiking, and staying active. Exercise helps me reset and think more clearly about research problems.</p>
-      </div>
-      <div class="hobby-card">
-        <span class="hobby-icon">✈️</span>
-        <h3>旅行 — Travel</h3>
-        <p>Exploring new places and cultures. Travel reminds me how big and interconnected the world really is.</p>
-      </div>
-      <div class="hobby-card">
-        <span class="hobby-icon">📖</span>
-        <h3>语言学习 — Languages</h3>
-        <p>Currently learning Mandarin Chinese. I enjoy the challenge of thinking in a completely different structure.</p>
-      </div>
-    </div>
+    <div class="hobby-grid"><div class="hobby-card">
+      <span class="hobby-icon" aria-hidden="true">✦</span><h3>Personal interests</h3>
+      <p>Personal interests will be added after confirmation.</p>
+    </div></div>
   </section>
 
   <!-- 联系方式 -->
   <section id="contact">
     <p class="section-label">联系方式 — Contact</p>
     <div class="contact-grid">
-      <div class="contact-card">
-        <p class="label">电子邮件 — Email</p>
-        <p class="value">lchen357@asu.edu</p>
-      </div>
-      <div class="contact-card">
-        <p class="label">大学 — University</p>
-        <p class="value">Arizona State University</p>
-      </div>
-      <div class="contact-card">
-        <p class="label">研究方向 — Research</p>
-        <p class="value">Optical Wireless Comms</p>
-      </div>
-      <div class="contact-card">
-        <p class="label">所在城市 — Location</p>
-        <p class="value">Tempe, Arizona, USA</p>
-      </div>
+      <div class="contact-card"><p class="label">学校 — University</p><p class="value">University of Science and Technology of China (USTC)</p></div>
+      <div class="contact-card"><p class="label">代码 — GitHub</p><p class="value"><a href="https://github.com/ustcwxlzy">github.com/ustcwxlzy</a></p></div>
+      <div class="contact-card"><p class="label">研究方向 — Research</p><p class="value">Optical Wireless Communications</p></div>
     </div>
+    <p class="review-note" style="margin-top:24px">Email and location await confirmation.</p>
   </section>
 
 </main>
 
 <script>
-function show(id,link){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  link.classList.add('active');
+function showSectionFromHash(){
+  const id=location.hash.slice(1);
+  const section=document.getElementById(id);
+  const target=section && section.matches('main section') ? section : document.getElementById('about');
+  document.querySelectorAll('main section').forEach(s=>s.classList.toggle('active',s===target));
+  document.querySelectorAll('nav a').forEach(a=>{
+    const active=a.getAttribute('href')==='#'+target.id;
+    a.classList.toggle('active',active);
+    if(active) a.setAttribute('aria-current','page');
+    else a.removeAttribute('aria-current');
+  });
 }
 function toggleTheme(){
   const h=document.documentElement;
-  const dark=h.getAttribute('data-theme')==='dark';
-  h.setAttribute('data-theme',dark?'light':'dark');
-  document.getElementById('theme-label').textContent=dark?'Light':'Dark';
+  const dark=h.getAttribute('data-theme')!=='dark';
+  h.setAttribute('data-theme',dark?'dark':'light');
+  document.getElementById('theme-label').textContent=dark?'Dark':'Light';
+  document.querySelector('.toggle-btn').setAttribute('aria-pressed',String(dark));
 }
+window.addEventListener('hashchange',showSectionFromHash);
+showSectionFromHash();
 </script>
 </body>
 </html>
